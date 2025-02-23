@@ -5,40 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blog - Personal Website</title>
   <link rel="stylesheet" href="css/style.css">
-  <!-- Include Font Awesome for icons if needed -->
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <img src="images/profile.jpg" alt="Profile Photo" class="profile-photo">
-    <nav>
-      <ul>
-        <li><a href="index.html">About</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="readings.html">Readings</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <main>
-    <section class="blog">
-      <h1>My Blog</h1>
-      <article>
-        <h2>Blog Post Title 1</h2>
-        <p>This is a summary of the blog post. More content coming soon...</p>
-        <a href="#">Read More</a>
-      </article>
-      <article>
-        <h2>Blog Post Title 2</h2>
-        <p>This is another summary of the blog post. Check back later for the full post...</p>
-        <a href="#">Read More</a>
-      </article>
-      <!-- Additional blog posts can be added here -->
-    </section>
-  </main>
-  
+  <canvas id="canvas"></canvas>
+  <nav class="top-nav">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="readings.html">Readings</a>
+  </nav>
+  <div class="container">
+    <aside class="sidebar">
+        <a href="index.html">
+            <img src="images/profile.jpg" alt="Profile Photo" class="profile-photo">
+          </a>      <nav class="social">
+        <a href="https://twitter.com/asher5772" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/asherps" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/asher_bps" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/asher-parker-sartori-456033245/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.lesswrong.com/users/fiyr" target="_blank" class="lw-link"><span class="lw-icon">lw</span></a>
+        <a href="https://www.youtube.com/channel/UCBmUpx94wuIksVvuy1fR2LQ" target="_blank"><i class="fab fa-youtube"></i></a>
+      </nav>
+    </aside>
+    <main class="content blog-content" style="margin-left: 200px;">
+      <div class="blog-container">
+        <div class="main-blog">
+          <h1>Longform</h1>
+          <article>
+            <h2>Blog Post Title 1</h2>
+            <p>This is a summary of the blog post. More content coming soon...</p>
+            <a href="blog/post1.html">Read More</a>
+          </article>
+          <article>
+            <h2>Blog Post Title 2</h2>
+            <p>This is another summary of the blog post. Check back later for the full post...</p>
+            <a href="blog/post2.html">Read More</a>
+          </article>
+        </div>
+        
+        <div class="quick-takes">
+          <h2>Quick Takes</h2>
+          <div class="take">
+            <p>Short thought or observation about something interesting...</p>
+            <span class="date">June 1, 2023</span>
+          </div>
+          <div class="take">
+            <p>Another quick thought or interesting observation...</p>
+            <span class="date">May 30, 2023</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
   <footer>
     <p>&copy; 2023 [Your Name]. All rights reserved.</p>
   </footer>
+  <script src="js/animation.js"></script>
 </body>
 </html> 

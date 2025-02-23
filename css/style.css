@@ -5,97 +5,289 @@
   box-sizing: border-box;
 }
 
-/* Body styles - nature-themed background */
+/* Canvas for animation */
+#canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Base body styles */
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #e0f7fa, #e8f5e9);
+  background: #e0f7fa; /* fallback background */
   color: #333;
   line-height: 1.6;
 }
 
-/* Header and Navigation styling */
-header {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 10px 20px;
+/* Container for layout */
+.container {
+  position: relative;
+  z-index: 1;
   display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Sidebar with fixed left social media */
+.sidebar {
+  width: 80px;
+  background: none; /* removed white bar */
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 20px; /* shifted right so profile is not cut off */
+  bottom: 0;
 }
 
-header .profile-photo {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%; /* makes the image circular */
+.sidebar .profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   object-fit: cover;
-  margin-right: 20px;
+  margin-bottom: 30px;
 }
 
-nav ul {
-  list-style-type: none;
+.sidebar .social {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 100%;
+  justify-items: center;
+  row-gap: 2px;
+  column-gap: 5px;
+}
+
+.sidebar .social a {
+  color: #8B4513;
+  transition: color 0.3s ease;
+  font-size: 1.5em;
+}
+
+.sidebar .social a:hover {
+  color: #A0522D;
+}
+
+/* LessWrong logo styling */
+.sidebar .social img.lw-logo {
+  width: 24px;
+  height: 24px;
+  filter: invert(27%) sepia(95%) saturate(431%) hue-rotate(346deg) brightness(88%) contrast(88%);
+  transition: filter 0.3s ease;
+}
+
+.sidebar .social a:hover img.lw-logo {
+  filter: invert(32%) sepia(74%) saturate(436%) hue-rotate(338deg) brightness(91%) contrast(86%);
+}
+
+/* Main content styles */
+.content {
+  flex: 1;
+  margin-left: 100px; /* leave space for sidebar */
+  padding: 20px;
+}
+
+/* Home page: center the about content */
+.home-content {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: calc(100vh - 40px);
 }
 
-nav ul li a {
+/* Main navigation links (used in all pages) */
+.main-nav {
+  margin-top: 20px;
+}
+
+.main-nav a {
+  margin: 0 10px;
+  color: #2e7d32;
   text-decoration: none;
-  color: #2e7d32; /* earthy green */
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+.main-nav a:hover {
   color: #1b5e20;
 }
 
-/* Main content styling */
-main {
-  padding: 20px;
-}
-
-/* Section headings */
-h1 {
-  margin-bottom: 20px;
-  color: #33691e;
-}
-
-section p {
-  margin-bottom: 15px;
-}
-
-/* Social Links styling */
-.social-links {
-  margin-top: 20px;
-}
-
-.social-links a {
-  color: #2e7d32;
-  margin-right: 15px;
-  font-size: 1.5em;
-  transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-  color: #1b5e20;
-}
-
-/* Blog post article styling */
-.blog article {
-  padding: 15px;
-  margin-bottom: 20px;
+/* Blog page: style individual articles */
+.blog-content article {
+  margin: 20px 0;
   border-bottom: 1px solid #ccc;
-}
-
-.blog article h2 {
-  color: #33691e;
+  padding-bottom: 10px;
 }
 
 /* Footer styling */
 footer {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   text-align: center;
   padding: 10px 0;
   border-top: 1px solid #ccc;
-  position: sticky;
-  bottom: 0;
-  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar .social a.lw-link {
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+}
+
+.sidebar .social .lw-icon {
+  font-size: 0.8em;
+  color: #8B4513;
+  transition: color 0.3s ease;
+}
+
+.sidebar .social a:hover .lw-icon {
+  color: #A0522D;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.about-section {
+  margin-bottom: 40px;
+}
+
+.about-section h2 {
+  color: #2e7d32;
+  margin-bottom: 20px;
 } 
+
+
+/* Blog layout styles */
+.blog-container {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+    margin-top: 40px;
+  }
+  
+  .main-blog {
+    flex: 2;
+  }
+  
+  .quick-takes {
+    flex: 1;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    max-width: 300px;
+  }
+  
+  .quick-takes h2 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+  }
+  
+  .take {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .take:last-child {
+    border-bottom: none;
+  }
+  
+  .take .date {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+  }
+
+
+  .top-nav {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 2;
+    border-radius: 0 0 10px 10px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .top-nav a {
+    margin: 0 15px;
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .top-nav a:hover {
+    color: #1b5e20;
+  }
+
+.readings-content {
+  margin-left: 200px;
+  padding-top: 100px;
+}
+
+.readings-content h1 {
+  padding-left: 20px;
+}
+
+.readings-content ul {
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.readings-content li {
+  margin-bottom: 20px;
+  list-style-type: none;
+}
+
+.readings-content li a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.readings-content li a:hover {
+  color: #1b5e20;
+}
+
+.blog-content {
+  padding-top: 75px;
+}
+
+.blog-post-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 100px;
+  }
+  
+  .blog-post-content article {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 30px;
+    border-radius: 8px;
+  }
+  
+  .post-meta {
+    color: #666;
+    margin: 10px 0 30px 0;
+  }
+  
+  .post-content {
+    line-height: 1.8;
+  }
