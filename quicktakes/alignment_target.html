@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alignment Targets - Quick Take</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <nav class="top-nav">
+    <a href="../index.html">Home</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../readings.html">Readings</a>
+  </nav>
+  <div class="container">
+    <aside class="sidebar">
+      <a href="../index.html">
+        <img src="../images/profile.jpg" alt="Profile Photo" class="profile-photo">
+      </a>
+      <nav class="social">
+        <a href="https://twitter.com/asher5772" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://github.com/asherps" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://instagram.com/asher_bps" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/asher-parker-sartori-456033245/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.lesswrong.com/users/fiyr" target="_blank" class="lw-link"><span class="lw-icon">lw</span></a>
+        <a href="https://www.youtube.com/channel/UCBmUpx94wuIksVvuy1fR2LQ" target="_blank"><i class="fab fa-youtube"></i></a>
+      </nav>
+    </aside>
+    <main class="content blog-post-content" style="margin-left: 200px;">
+      <article>
+        <h1>Alignment Targets</h1>
+        <div class="post-meta">
+          <span class="date">July 11, 2023</span>
+        </div>
+        <div class="post-content">
+          <p><em>A quick take on alignment targets, adapted from my lesswrong</em></p>
+          <br>
+          <p><strong>tldr:</strong> I'm a little confused about what labs are aiming for as an alignment target, and I think it would be helpful if they publicly clarified this and/or considered it more internally.</p>
+          <br>
+          <p>I think we could be very close to AGI, and I think it's important that whoever makes AGI thinks carefully about what properties to target in trying to create a system that is both useful and maximally likely to be safe.</p>
+          <br>
+          <p>It seems that right now, most labs are targeting something that resembles a slightly more harmless modified version of human values — maybe a CEV-like thing. However, some alignment targets may be easier than others. It may turn out that it is hard to instill a CEV-like thing into an AGI, while it's easier to ensure properties like corrigibility or truthfulness.</p>
+          <br>
+          <p>One intuition for why this may be true: if you took OpenAI's weak-to-strong generalization setup, and tried eliciting capabilities relating to different alignment targets (standard reward modeling might be a solid analogy for the current Anthropic plan, but one could also try this with truthfulness or corrigibility), I think you may well find that a capability like 'truthfulness' is more natural than reward modeling and can be elicited more easily. Truth may also have low algorithmic complexity compared to human values.</p>
+          <br>
+          <p>There is an inherent tradeoff between harmlessness and usefulness. Similarly, there is some inherent tradeoff between harmlessness and corrigibility, and between harmlessness and truthfulness (the Alignment Faking paper provides strong evidence for the latter two points, even ignoring theoretical arguments).</p>
+          <br>
+          <p>As seen in the Alignment Faking paper, Claude seems to align pretty well with human values and be relatively harmless. However, as a tradeoff, it does not seem to be very corrigible or truthful.</p>
+          <br>
+          <p>Some people I've talked to seem to think that Anthropic does think of corrigibility as one of the main pillars of their alignment plan. If that's the case, maybe they should make their current AIs more corrigible, so their safety testing is enacted on AIs that resemble their first AGI. Or, if they haven't really thought about this question (or if individuals have thought about it, but never cohesively in an organized fashion), they should maybe consider it. 
+          <br>
+          My guess is that there are designated people at Anthropic thinking about what values are important to instill, but they are thinking about this more from a societal perspective than an alignment perspective.</p>
+          <br>
+          <p>Mostly, I want to avoid a scenario where labs do the default thing without considering tough, high-level strategy questions until the last minute. I also think it would be nice to do concrete empirical research now which lines up well with what we should expect to see later.</p>
+        </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/animation.js"></script>
+</body>
+</html>
