@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>on the creation of narrow AI - Personal Website</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>body { background: white; }</style>
+</head>
+<body>
+  <nav class="top-nav">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../updates.html">Updates</a>
+  </nav>
+  <div class="container">
+    <aside class="sidebar">
+      <a href="../index.html">
+        <img src="../images/profile.jpg" alt="Profile Photo" class="profile-photo">
+      </a>
+      <nav class="social">
+        <a href="https://twitter.com/asher5772" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://scholar.google.com/citations?user=rJMoYZEAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+        <a href="https://instagram.com/asher_bps" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/asher-parker-sartori-456033245/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.lesswrong.com/users/fiyr" target="_blank" class="lw-link"><span class="lw-icon">lw</span></a>
+        <a href="https://www.youtube.com/channel/UCBmUpx94wuIksVvuy1fR2LQ" target="_blank"><i class="fab fa-youtube"></i></a>
+      </nav>
+    </aside>
+    <main class="content blog-post-content" style="margin-left: 200px;">
+      <article>
+        <h1>on the creation of narrow AI</h1>
+        <div class="post-meta">
+          <span class="date">May 21, 2025</span>
+        </div>
+        <div class="post-content">
+          <p>Our paper with Eric Michaud and Max Tegmark is out! Today, the most competent AI systems in almost any domain are broadly knowledgeable across almost every domain. We study whether it has to be this way, or whether we can create truly narrow AI systems. (<a href="https://arxiv.org/abs/2505.15811">paper</a>)</p>
+          <br>
+          <p>Some key findings:</p>
+          <p>1. In certain settings, curriculum learning effects are essential for achieving high performance — sometimes you need to train on a broad distribution to learn specific narrow skills.</p>
+          <p>2. Pruning often outperforms distillation at creating capable, task-specific networks.</p>
+          <p>3. Superposition remains a key bottleneck to efficient structured pruning.</p>
+          <p>4. Structured regularization can mitigate this problem by aligning task-specific features with prunable model components.</p>
+          <br>
+          <p>Check out the <a href="https://arxiv.org/abs/2505.15811">preprint</a> for additional findings. Accepted to NeurIPS 2025.</p>
+        </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/error-handler.js"></script>
+</body>
+</html>
