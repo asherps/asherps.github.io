@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>thoughts on scaling parameter decomposition - Quick Take</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>body { background: white; }</style>
+</head>
+<body>
+  <nav class="top-nav">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../updates.html">Updates</a>
+  </nav>
+  <div class="container">
+    <aside class="sidebar">
+      <a href="../index.html">
+        <img src="../images/profile.jpg" alt="Profile Photo" class="profile-photo">
+      </a>
+      <nav class="social">
+        <a href="https://twitter.com/asher5772" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://scholar.google.com/citations?user=rJMoYZEAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+        <a href="https://instagram.com/asher_bps" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/asher-parker-sartori-456033245/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.lesswrong.com/users/fiyr" target="_blank" class="lw-link"><span class="lw-icon">lw</span></a>
+        <a href="https://www.youtube.com/channel/UCBmUpx94wuIksVvuy1fR2LQ" target="_blank"><i class="fab fa-youtube"></i></a>
+      </nav>
+    </aside>
+    <main class="content blog-post-content" style="margin-left: 200px;">
+      <article>
+        <h1>thoughts on scaling parameter decomposition</h1>
+        <div class="post-meta">
+          <span class="date">February 4, 2026</span>
+        </div>
+        <div class="post-content">
+          <p>The scaling parameter decomposition paper is coming out soonish! Pretty exciting, but imo they still haven't solved a few big issues.</p>
+          <br>
+          <p>I worry that the components they find, like SAE features, are sometimes going to look interpretable without faithfully representing what the model is doing. Though they're definitely a lot better than SAEs in this regard!</p>
+          <br>
+          <p>I think I've come up with ideas for solving a couple of the biggest problems I see with the agenda. I want to think about whether there are any fundamental bottlenecks. If there are, my current actions are reasonable. If there aren't, my life's priority should probably be fixing these problems, or I'll regret not doing so in a few years. (Ig the first thing might be solved by the time the paper is finished; someone on the team recently pushed a PR with better causal importance functions).</p>
+          <br>
+          <p>But yea, fundamental bottlenecks. In the current formulation, there's a pretty arbitrary balance between faithfulness, minimality, and reconstruction. I think a lot of this could be solved with a better notion of MDL than 'use as few rank-1 subcomponents as possible on any given input'. Someone on the team recently added a loss term penalizing high-frequency components as well. On one hand, this brings us closer to a reasonable notion of MDL, on the other hand, it's clearly unprincipled. (Plus, this is loss term number 7). But with a sufficiently good notion of MDL, if we enforce perfect reconstruction, I thiiink that the only solution that satisfies both faithfulness and minimality is ~the true circuits. (A better notion of MDL would also solve a lot of smaller dumb problems, like multiple unrelated subcomponents grouping into a single rank-1 matrix). (But it would also solve some huge problems, eg, it would immediately make the faithfulness loss way more meaningful).</p>
+          <br>
+          <p>This is the sort of thing that someone on the team would have solved already if it were easily solvable, I think. But it definitely seems very fundamentally possible, especially if you incorporate some cross-datapoint information theoretic measure into the training loop. If these better CIs work, we just have to 1) figure out MDL and 2) figure out how to do stochastic masking only on the correct abstractions—and then we should be able to throw compute at the method and find the true circuits? Of course, there's also something to be said for working on agendas that aim to automate a notion of human-interpretability rather than circuit-finding in the network's ontology. The circuits we find w/ parameter decomposition might be pretty fucked up.</p>
+          <br>
+          <p>Another possibility is that the network's true circuits aren't actually that close to MDL, so our decomposition finds a more MDL solution which mimics the original model's output and weights perfectly, but has some 'wiggle room' left in the faithfulness loss.</p>
+        </div>
+      </article>
+    </main>
+  </div>
+  <script src="../js/error-handler.js"></script>
+</body>
+</html>
